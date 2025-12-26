@@ -21,22 +21,23 @@ logger = get_logger(__name__)
 
 # Language code to full name mapping
 LANGUAGE_NAMES = {
-    'en': 'English',
-    'es': 'Spanish',
-    'fr': 'French',
-    'de': 'German',
-    'it': 'Italian',
-    'pt': 'Portuguese',
-    'zh': 'Chinese',
-    'ja': 'Japanese',
-    'ko': 'Korean',
-    'ru': 'Russian',
-    'ar': 'Arabic',
-    'hi': 'Hindi',
-    'hu': 'Hungarian',
-    'vi': 'Vietnamese',
-    'th': 'Thai',
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "ru": "Russian",
+    "ar": "Arabic",
+    "hi": "Hindi",
+    "hu": "Hungarian",
+    "vi": "Vietnamese",
+    "th": "Thai",
 }
+
 
 def get_language_name(lang_code: str) -> str:
     """Get full language name from code."""

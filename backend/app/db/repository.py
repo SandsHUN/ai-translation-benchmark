@@ -168,9 +168,7 @@ class Repository:
         stmt = (
             select(Run)
             .where(Run.id == run_id)
-            .options(
-                selectinload(Run.translations).selectinload(Translation.evaluations)
-            )
+            .options(selectinload(Run.translations).selectinload(Translation.evaluations))
         )
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
@@ -189,9 +187,7 @@ class Repository:
             select(Run)
             .order_by(Run.created_at.desc())
             .limit(limit)
-            .options(
-                selectinload(Run.translations).selectinload(Translation.evaluations)
-            )
+            .options(selectinload(Run.translations).selectinload(Translation.evaluations))
         )
         result = await self.session.execute(stmt)
         return list(result.scalars().all())

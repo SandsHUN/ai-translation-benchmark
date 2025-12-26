@@ -77,13 +77,13 @@ class GoogleTranslateProvider(TranslatorProvider):
                 text,
                 target_language=target_lang,
                 source_language=source_lang,
-                model=self.model if self.model != 'default' else None,
+                model=self.model if self.model != "default" else None,
             )
 
             logger.info("Google Translate API response received")
 
-            output_text = result['translatedText']
-            detected_source = result.get('detectedSourceLanguage')
+            output_text = result["translatedText"]
+            detected_source = result.get("detectedSourceLanguage")
 
             logger.info(
                 f"Google Translate successful - Output length: {len(output_text)} chars, "
@@ -98,7 +98,7 @@ class GoogleTranslateProvider(TranslatorProvider):
                 usage_tokens=None,  # Google doesn't provide token count
                 raw_response={
                     "detected_source_language": detected_source,
-                    "model": result.get('model'),
+                    "model": result.get("model"),
                 },
             )
 

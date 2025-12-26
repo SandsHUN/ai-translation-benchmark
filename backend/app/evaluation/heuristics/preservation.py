@@ -39,13 +39,13 @@ class PreservationMetric:
     def _extract_numbers(self, text: str) -> list[str]:
         """Extract numbers from text."""
         # Match integers, decimals, percentages, dates
-        pattern = r'\b\d+(?:[.,]\d+)?%?\b'
+        pattern = r"\b\d+(?:[.,]\d+)?%?\b"
         return re.findall(pattern, text)
 
     def _extract_punctuation_pattern(self, text: str) -> str:
         """Extract punctuation pattern from text."""
         # Get sequence of punctuation marks
-        return ''.join(c for c in text if c in string.punctuation)
+        return "".join(c for c in text if c in string.punctuation)
 
     def _extract_capitalized_words(self, text: str) -> list[str]:
         """Extract capitalized words (potential named entities)."""
@@ -146,9 +146,7 @@ class PreservationMetric:
         else:
             overall_score = 100.0
 
-        logger.debug(
-            f"Preservation scores: {scores}, overall: {overall_score:.2f}"
-        )
+        logger.debug(f"Preservation scores: {scores}, overall: {overall_score:.2f}")
 
         return {
             "score": overall_score,

@@ -122,9 +122,7 @@ class RepetitionMetric:
         if max_repetition > self.threshold:
             warning = f"{WARN_HIGH_REPETITION} (score: {max_repetition:.2f})"
 
-        logger.debug(
-            f"Repetition analysis: max={max_repetition:.2f}, score={score:.2f}"
-        )
+        logger.debug(f"Repetition analysis: max={max_repetition:.2f}, score={score:.2f}")
 
         return {
             "score": score,

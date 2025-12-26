@@ -80,8 +80,7 @@ class TranslatorProvider(ABC):
 
         try:
             logger.info(
-                f"Starting translation with {self.name} ({self.model}) "
-                f"to '{target_lang}'"
+                f"Starting translation with {self.name} ({self.model}) " f"to '{target_lang}'"
             )
 
             result = await self.translate(text, source_lang, target_lang, **options)
@@ -89,9 +88,7 @@ class TranslatorProvider(ABC):
             latency_ms = (time.time() - start_time) * 1000
             result.latency_ms = latency_ms
 
-            logger.info(
-                f"Translation completed with {self.name} in {latency_ms:.2f}ms"
-            )
+            logger.info(f"Translation completed with {self.name} in {latency_ms:.2f}ms")
 
             return result
 
@@ -99,9 +96,7 @@ class TranslatorProvider(ABC):
             latency_ms = (time.time() - start_time) * 1000
             error_msg = str(e)
 
-            logger.error(
-                f"Translation failed with {self.name}: {error_msg}"
-            )
+            logger.error(f"Translation failed with {self.name}: {error_msg}")
 
             return TranslationResult(
                 provider_name=self.name,

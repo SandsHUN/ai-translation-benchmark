@@ -54,7 +54,11 @@ class ProviderFactory:
 
         if provider_type == PROVIDER_TYPE_OPENAI:
             # Get API key from config or request
-            api_key = config.api_key if hasattr(config, 'api_key') and config.api_key else settings.openai_api_key
+            api_key = (
+                config.api_key
+                if hasattr(config, "api_key") and config.api_key
+                else settings.openai_api_key
+            )
 
             return OpenAIProvider(
                 name=config.name,
@@ -76,7 +80,7 @@ class ProviderFactory:
 
         elif provider_type == PROVIDER_TYPE_DEEPL:
             # Get API key from config or request
-            api_key = config.api_key if hasattr(config, 'api_key') and config.api_key else None
+            api_key = config.api_key if hasattr(config, "api_key") and config.api_key else None
             if not api_key:
                 raise ValueError(f"API key required for DeepL provider: {config.name}")
 
@@ -89,7 +93,7 @@ class ProviderFactory:
 
         elif provider_type == PROVIDER_TYPE_GOOGLE:
             # Get API key from config or request
-            api_key = config.api_key if hasattr(config, 'api_key') and config.api_key else None
+            api_key = config.api_key if hasattr(config, "api_key") and config.api_key else None
             if not api_key:
                 raise ValueError(f"API key required for Google Translate provider: {config.name}")
 

@@ -20,16 +20,16 @@ logger = get_logger(__name__)
 
 # Language code mapping for DeepL
 DEEPL_LANGUAGE_CODES = {
-    'en': 'EN',
-    'de': 'DE',
-    'fr': 'FR',
-    'es': 'ES',
-    'it': 'IT',
-    'pt': 'PT-PT',
-    'ru': 'RU',
-    'zh': 'ZH',
-    'ja': 'JA',
-    'ko': 'KO',
+    "en": "EN",
+    "de": "DE",
+    "fr": "FR",
+    "es": "ES",
+    "it": "IT",
+    "pt": "PT-PT",
+    "ru": "RU",
+    "zh": "ZH",
+    "ja": "JA",
+    "ko": "KO",
 }
 
 
@@ -101,9 +101,7 @@ class DeepLProvider(TranslatorProvider):
 
             output_text = result.text
 
-            logger.info(
-                f"DeepL translation successful - Output length: {len(output_text)} chars"
-            )
+            logger.info(f"DeepL translation successful - Output length: {len(output_text)} chars")
 
             return TranslationResult(
                 provider_name=self.name,
@@ -111,7 +109,11 @@ class DeepLProvider(TranslatorProvider):
                 output_text=output_text.strip(),
                 latency_ms=0.0,  # Will be set by translate_with_timing
                 usage_tokens=None,  # DeepL doesn't provide token count
-                raw_response={"detected_source_lang": result.detected_source_lang} if hasattr(result, 'detected_source_lang') else None,
+                raw_response=(
+                    {"detected_source_lang": result.detected_source_lang}
+                    if hasattr(result, "detected_source_lang")
+                    else None
+                ),
             )
 
         except Exception as e:

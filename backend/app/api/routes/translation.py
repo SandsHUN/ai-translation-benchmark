@@ -78,7 +78,9 @@ async def run_translation(
     providers = []
     for idx, provider_req in enumerate(request.providers, 1):
         try:
-            logger.info(f"Creating provider {idx}/{len(request.providers)}: {provider_req.type} - {provider_req.model}")
+            logger.info(
+                f"Creating provider {idx}/{len(request.providers)}: {provider_req.type} - {provider_req.model}"
+            )
             provider = ProviderFactory.create_from_request(provider_req.model_dump())
             providers.append(provider)
             logger.info(f"Provider {idx} created successfully")

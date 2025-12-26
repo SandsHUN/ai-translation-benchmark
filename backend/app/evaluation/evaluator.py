@@ -40,9 +40,7 @@ class Evaluator:
             check_punctuation=self.config.get(
                 "metrics.heuristics.preservation.check_punctuation", True
             ),
-            check_entities=self.config.get(
-                "metrics.heuristics.preservation.check_entities", True
-            ),
+            check_entities=self.config.get("metrics.heuristics.preservation.check_entities", True),
         )
 
         # Initialize semantic metric
@@ -84,9 +82,7 @@ class Evaluator:
         Returns:
             EvaluationResult with scores and breakdown
         """
-        logger.info(
-            f"Evaluating translation {translation_id} from {provider_name}"
-        )
+        logger.info(f"Evaluating translation {translation_id} from {provider_name}")
 
         metric_results: dict[str, dict[str, Any]] = {}
 
@@ -97,19 +93,13 @@ class Evaluator:
             )
 
         if self.config.is_metric_enabled("heuristics", "length_ratio"):
-            metric_results["length_ratio"] = self.length_ratio.evaluate(
-                source_text, target_text
-            )
+            metric_results["length_ratio"] = self.length_ratio.evaluate(source_text, target_text)
 
         if self.config.is_metric_enabled("heuristics", "repetition"):
-            metric_results["repetition"] = self.repetition.evaluate(
-                source_text, target_text
-            )
+            metric_results["repetition"] = self.repetition.evaluate(source_text, target_text)
 
         if self.config.is_metric_enabled("heuristics", "preservation"):
-            metric_results["preservation"] = self.preservation.evaluate(
-                source_text, target_text
-            )
+            metric_results["preservation"] = self.preservation.evaluate(source_text, target_text)
 
         # Run semantic similarity
         if self.semantic_similarity:

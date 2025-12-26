@@ -20,22 +20,23 @@ logger = get_logger(__name__)
 
 # Language code to full name mapping
 LANGUAGE_NAMES = {
-    'en': 'English',
-    'es': 'Spanish',
-    'fr': 'French',
-    'de': 'German',
-    'it': 'Italian',
-    'pt': 'Portuguese',
-    'zh': 'Chinese',
-    'ja': 'Japanese',
-    'ko': 'Korean',
-    'ru': 'Russian',
-    'ar': 'Arabic',
-    'hi': 'Hindi',
-    'hu': 'Hungarian',
-    'vi': 'Vietnamese',
-    'th': 'Thai',
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "ru": "Russian",
+    "ar": "Arabic",
+    "hi": "Hindi",
+    "hu": "Hungarian",
+    "vi": "Vietnamese",
+    "th": "Thai",
 }
+
 
 def get_language_name(lang_code: str) -> str:
     """Get full language name from code."""
@@ -69,6 +70,7 @@ class LocalOpenAIProvider(TranslatorProvider):
         if not model or model == "local-model":
             try:
                 import httpx
+
                 response = httpx.get(f"{base_url.rstrip('/v1')}/v1/models", timeout=5)
                 if response.status_code == 200:
                     data = response.json()
@@ -121,7 +123,9 @@ class LocalOpenAIProvider(TranslatorProvider):
         temperature = options.get("temperature", 0.3)
 
         try:
-            logger.info(f"Calling LM Studio API - URL: {self.base_url}, Model: {self.model}, Target: {target_lang}")
+            logger.info(
+                f"Calling LM Studio API - URL: {self.base_url}, Model: {self.model}, Target: {target_lang}"
+            )
             logger.debug(f"Request text: {text[:100]}...")
             # Call local API
             response = await self.client.chat.completions.create(

@@ -76,7 +76,9 @@ class ConfigManager:
     def _load_config(self) -> None:
         """Load configuration from YAML file."""
         if not self.config_path.exists():
-            raise FileNotFoundError(f"Configuration file not found: {self.config_path}")
+            # Use empty config if file doesn't exist (e.g., in CI environment)
+            self._config = {}
+            return
 
         with open(self.config_path, encoding="utf-8") as f:
             self._config = yaml.safe_load(f)

@@ -16,8 +16,8 @@ class TestLanguageDetection:
     def test_correct_language(self):
         metric = LanguageDetectionMetric()
         result = metric.evaluate(
-            source_text="Hello, world!",
-            target_text="¡Hola, mundo!",
+            source_text="Hello, world! This is a test.",
+            target_text="Hola, mundo! Esta es una prueba de traducción al español.",
             target_lang="es",
         )
         assert result["matches_target"] is True

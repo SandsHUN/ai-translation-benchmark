@@ -7,7 +7,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import api, { RunListItem } from '../api/client';
+import api, { RunListItem as _RunListItem } from '../api/client';
 
 export default function HistoryPanel() {
     const [selectedRun, setSelectedRun] = useState<number | null>(null);

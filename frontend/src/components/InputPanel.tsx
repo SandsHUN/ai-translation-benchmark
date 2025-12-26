@@ -81,7 +81,7 @@ export default function InputPanel({ onTranslationStart, onTranslationComplete, 
                 if (response.ok) {
                     const data = await response.json();
                     if (data.data && Array.isArray(data.data)) {
-                        const modelIds = data.data.map((model: any) => model.id);
+                        const modelIds = data.data.map((model: { id: string }) => model.id);
                         setLMStudioModels(modelIds);
                         // Set first model as default if available
                         if (modelIds.length > 0 && !lmStudioModel) {
@@ -100,7 +100,7 @@ export default function InputPanel({ onTranslationStart, onTranslationComplete, 
         // Debounce the fetch to avoid too many requests while typing
         const timeoutId = setTimeout(fetchModels, 500);
         return () => clearTimeout(timeoutId);
-    }, [lmStudioUrl, useLMStudio]);
+    }, [lmStudioUrl, lmStudioModel, useLMStudio]);
 
     // Fetch available models from Ollama when URL changes
     useEffect(() => {
@@ -120,7 +120,7 @@ export default function InputPanel({ onTranslationStart, onTranslationComplete, 
                 if (response.ok) {
                     const data = await response.json();
                     if (data.data && Array.isArray(data.data)) {
-                        const modelIds = data.data.map((model: any) => model.id);
+                        const modelIds = data.data.map((model: { id: string }) => model.id);
                         setOllamaModels(modelIds);
                         // Set first model as default if available
                         if (modelIds.length > 0 && !ollamaModel) {
@@ -139,14 +139,14 @@ export default function InputPanel({ onTranslationStart, onTranslationComplete, 
         // Debounce the fetch to avoid too many requests while typing
         const timeoutId = setTimeout(fetchModels, 500);
         return () => clearTimeout(timeoutId);
-    }, [ollamaUrl]);
+    }, [ollamaUrl, ollamaModel, useOllama]);
 
     const mutation = useMutation({
         mutationFn: (request: TranslationRequest) => api.runTranslation(request),
         onSuccess: (data) => {
             onTranslationComplete(data);
         },
-        onError: (error: any) => {
+        onError: (error: { response?: { data?: { detail?: string } }; message: string }) => {
             alert(`Translation failed: ${error.response?.data?.detail || error.message}`);
         },
     });

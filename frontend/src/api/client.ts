@@ -48,7 +48,7 @@ export interface MetricResult {
     name: string;
     value: number;
     weight: number;
-    details?: any;
+    details?: Record<string, unknown>;
 }
 
 export interface ScoreBreakdown {

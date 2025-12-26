@@ -16,7 +16,7 @@ from app.evaluation.heuristics.preservation import PreservationMetric
 from app.evaluation.heuristics.repetition import RepetitionMetric
 from app.evaluation.scorer import ScoreFusion
 from app.evaluation.semantic.embedding_similarity import SemanticSimilarityMetric
-from app.schemas.evaluation import EvaluationResult, ScoreBreakdown
+from app.schemas.evaluation import EvaluationResult
 
 logger = get_logger(__name__)
 
@@ -47,7 +47,7 @@ class Evaluator:
 
         # Initialize semantic metric
         self.semantic_similarity = None
-        if self.config.is_metric_enabled(CATEGORY_SEMANTIC := "semantic", ""):
+        if self.config.is_metric_enabled("semantic", ""):
             model_name = self.config.get(
                 "metrics.semantic.model",
                 "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",

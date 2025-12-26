@@ -97,7 +97,7 @@ class DeepLProvider(TranslatorProvider):
                 source_lang=source_lang_deepl,
             )
 
-            logger.info(f"DeepL API response received")
+            logger.info("DeepL API response received")
 
             output_text = result.text
 

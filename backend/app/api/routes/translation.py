@@ -8,13 +8,12 @@ Main translation and evaluation endpoints.
 """
 
 import asyncio
-from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import config_manager
-from app.core.constants import ERR_RUN_NOT_FOUND, MSG_RUN_NOT_FOUND, ROUTE_RUN, ROUTE_RUN_BY_ID
+from app.core.constants import MSG_RUN_NOT_FOUND, ROUTE_RUN, ROUTE_RUN_BY_ID
 from app.core.logging import get_logger
 from app.db.database import get_db_session
 from app.db.repository import Repository
@@ -91,7 +90,6 @@ async def run_translation(
     if not providers:
         logger.error("No valid providers configured")
         raise HTTPException(status_code=400, detail="No valid providers configured")
-    
     logger.info(f"Successfully created {len(providers)} providers")
 
     # Execute translations in parallel

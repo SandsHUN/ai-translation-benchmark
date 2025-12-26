@@ -7,7 +7,6 @@ Data access layer for CRUD operations on database models.
 """
 
 import hashlib
-import json
 from typing import Any
 
 from sqlalchemy import select

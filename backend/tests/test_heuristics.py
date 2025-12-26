@@ -4,7 +4,6 @@ AI Translation Benchmark - Heuristics Tests
 Author: Zoltan Tamas Toth
 """
 
-import pytest
 
 from app.evaluation.heuristics.language_detection import LanguageDetectionMetric
 from app.evaluation.heuristics.length_ratio import LengthRatioMetric

@@ -6,7 +6,6 @@ Author: Zoltan Tamas Toth
 SQLAlchemy ORM models for storing translation runs, results, and evaluations.
 """
 
-import json
 from datetime import datetime
 from typing import Any
 

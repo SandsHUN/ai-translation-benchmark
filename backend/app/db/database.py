@@ -6,9 +6,9 @@ Author: Zoltan Tamas Toth
 Database engine setup and session management for SQLite.
 """
 
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import StaticPool

@@ -137,7 +137,7 @@ WARN_CONTENT_LOSS = "Potential content loss detected"
 WARN_FORMAT_DRIFT = "Format preservation issues detected"
 
 # System Prompts
-TRANSLATION_SYSTEM_PROMPT = """You are a professional translator. 
+TRANSLATION_SYSTEM_PROMPT = """You are a professional translator.
 Your task is to translate the following text from {source_lang} to {target_lang}.
 
 IMPORTANT: You MUST translate to {target_lang} language. Do not translate to any other language.

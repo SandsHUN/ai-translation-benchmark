@@ -55,7 +55,7 @@ class ProviderFactory:
         if provider_type == PROVIDER_TYPE_OPENAI:
             # Get API key from config or request
             api_key = config.api_key if hasattr(config, 'api_key') and config.api_key else settings.openai_api_key
-            
+
             return OpenAIProvider(
                 name=config.name,
                 model=config.model,

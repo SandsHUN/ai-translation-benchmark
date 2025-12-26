@@ -12,7 +12,7 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 from app.schemas.evaluation import EvaluationResult
-from app.schemas.provider import ProviderConfig, TranslationResult
+from app.schemas.provider import TranslationResult
 
 
 class ProviderRequest(BaseModel):

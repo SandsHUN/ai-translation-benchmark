@@ -109,7 +109,6 @@ class LocalOpenAIProvider(TranslatorProvider):
         # Prepare system prompt
         source_lang_str = get_language_name(source_lang) if source_lang else "the source language"
         target_lang_str = get_language_name(target_lang)
-        
         system_prompt = TRANSLATION_SYSTEM_PROMPT.format(
             source_lang=source_lang_str,
             target_lang=target_lang_str,
@@ -124,7 +123,6 @@ class LocalOpenAIProvider(TranslatorProvider):
         try:
             logger.info(f"Calling LM Studio API - URL: {self.base_url}, Model: {self.model}, Target: {target_lang}")
             logger.debug(f"Request text: {text[:100]}...")
-            
             # Call local API
             response = await self.client.chat.completions.create(
                 model=self.model,
@@ -134,7 +132,6 @@ class LocalOpenAIProvider(TranslatorProvider):
                 ],
                 temperature=temperature,
             )
-            
             logger.info(f"LM Studio API response received from {self.base_url}")
 
             # Extract translation

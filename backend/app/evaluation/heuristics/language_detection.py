@@ -6,7 +6,7 @@ Author: Zoltan Tamas Toth
 Verifies that the translation output matches the target language.
 """
 
-from langdetect import LangDetectException, detect, detect_langs
+from langdetect import LangDetectException, detect_langs
 
 from app.core.constants import WARN_LOW_CONFIDENCE
 from app.core.logging import get_logger

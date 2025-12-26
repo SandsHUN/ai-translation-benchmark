@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import health, providers, translation
 from app.core.config import settings
 from app.core.constants import API_PREFIX
-from app.core.logging import get_logger, setup_logging
+from app.core.logging import setup_logging
 from app.db.database import db
 
 # Setup logging

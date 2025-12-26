@@ -7,7 +7,6 @@ Handles loading and validation of application configuration from
 environment variables and YAML config files.
 """
 
-import os
 from pathlib import Path
 from typing import Any
 
@@ -79,7 +78,7 @@ class ConfigManager:
         if not self.config_path.exists():
             raise FileNotFoundError(f"Configuration file not found: {self.config_path}")
 
-        with open(self.config_path, "r", encoding="utf-8") as f:
+        with open(self.config_path, encoding="utf-8") as f:
             self._config = yaml.safe_load(f)
 
     def get(self, key: str, default: Any = None) -> Any:

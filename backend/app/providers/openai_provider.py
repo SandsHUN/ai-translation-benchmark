@@ -95,7 +95,6 @@ class OpenAIProvider(TranslatorProvider):
         # Prepare system prompt
         source_lang_str = get_language_name(source_lang) if source_lang else "the source language"
         target_lang_str = get_language_name(target_lang)
-        
         system_prompt = TRANSLATION_SYSTEM_PROMPT.format(
             source_lang=source_lang_str,
             target_lang=target_lang_str,
@@ -110,7 +109,6 @@ class OpenAIProvider(TranslatorProvider):
         try:
             logger.info(f"Calling OpenAI API - Model: {self.model}, Target: {target_lang}")
             logger.debug(f"Request text: {text[:100]}...")
-            
             # Call OpenAI API
             response = await self.client.chat.completions.create(
                 model=self.model,
@@ -120,8 +118,8 @@ class OpenAIProvider(TranslatorProvider):
                 ],
                 temperature=temperature,
             )
-            
-            logger.info(f"OpenAI API response received")
+
+            logger.info("OpenAI API response received")
 
             # Extract translation
             output_text = response.choices[0].message.content or ""

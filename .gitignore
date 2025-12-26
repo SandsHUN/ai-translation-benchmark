@@ -80,3 +80,6 @@ ai-translation-eval-project-plan.md
 
 # AI artifacts (Gemini brain folder)
 .gemini/
+
+# Workspace files
+*.code-workspace

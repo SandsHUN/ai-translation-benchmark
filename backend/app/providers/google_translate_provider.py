@@ -80,7 +80,7 @@ class GoogleTranslateProvider(TranslatorProvider):
                 model=self.model if self.model != 'default' else None,
             )
 
-            logger.info(f"Google Translate API response received")
+            logger.info("Google Translate API response received")
 
             output_text = result['translatedText']
             detected_source = result.get('detectedSourceLanguage')

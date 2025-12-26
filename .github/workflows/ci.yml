@@ -38,6 +38,11 @@ jobs:
         cd backend
         pytest tests/ -v --cov=app
     
+    - name: Setup config for health check
+      run: |
+        cd backend
+        cp ../config.yaml.example ../config.yaml
+    
     - name: Health check
       run: |
         cd backend

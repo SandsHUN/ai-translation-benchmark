@@ -1,0 +1,141 @@
+# AI Translation Benchmark Configuration
+# Author: Zoltan Tamas Toth
+
+# Provider Configurations
+providers:
+  # OpenAI Provider
+  - type: openai
+    name: OpenAI GPT-4
+    model: gpt-4
+    enabled: true
+    timeout: 30
+  
+  - type: openai
+    name: OpenAI GPT-3.5 Turbo
+    model: gpt-3.5-turbo
+    enabled: true
+    timeout: 30
+  
+  # Local OpenAI-compatible endpoints (e.g., LM Studio)
+  - type: local_openai
+    name: Local Model 1
+    base_url: http://localhost:1234/v1
+    model: local-model
+    enabled: false
+    timeout: 60
+  
+  - type: local_openai
+    name: Local Model 2
+    base_url: http://localhost:1235/v1
+    model: local-model-2
+    enabled: false
+    timeout: 60
+
+# Supported Languages
+languages:
+  source:
+    - code: en
+      name: English
+    - code: es
+      name: Spanish
+    - code: fr
+      name: French
+    - code: de
+      name: German
+    - code: it
+      name: Italian
+    - code: pt
+      name: Portuguese
+    - code: zh
+      name: Chinese
+    - code: ja
+      name: Japanese
+    - code: ko
+      name: Korean
+    - code: ru
+      name: Russian
+    - code: ar
+      name: Arabic
+    - code: hi
+      name: Hindi
+  
+  target:
+    - code: en
+      name: English
+    - code: es
+      name: Spanish
+    - code: fr
+      name: French
+    - code: de
+      name: German
+    - code: it
+      name: Italian
+    - code: pt
+      name: Portuguese
+    - code: zh
+      name: Chinese
+    - code: ja
+      name: Japanese
+    - code: ko
+      name: Korean
+    - code: ru
+      name: Russian
+    - code: ar
+      name: Arabic
+    - code: hi
+      name: Hindi
+
+# Evaluation Metrics Configuration
+metrics:
+  # Heuristic weights (reference-free)
+  heuristics:
+    language_detection:
+      weight: 0.15
+      enabled: true
+    
+    length_ratio:
+      weight: 0.10
+      enabled: true
+      min_ratio: 0.5
+      max_ratio: 2.0
+    
+    repetition:
+      weight: 0.15
+      enabled: true
+      max_ngram_size: 4
+    
+    preservation:
+      weight: 0.20
+      enabled: true
+      check_numbers: true
+      check_punctuation: true
+      check_entities: true
+  
+  # Semantic similarity
+  semantic:
+    weight: 0.40
+    enabled: true
+    model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+  
+  # Reference-based metrics (when reference is provided)
+  reference_based:
+    bleu:
+      weight: 0.30
+      enabled: true
+    
+    chrf:
+      weight: 0.35
+      enabled: true
+    
+    bertscore:
+      weight: 0.35
+      enabled: true
+
+# General Settings
+settings:
+  max_text_length: 5000
+  default_timeout: 30
+  enable_caching: false
+  export_formats:
+    - json
+    - csv

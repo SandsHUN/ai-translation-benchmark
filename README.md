@@ -21,6 +21,9 @@ A comprehensive platform for evaluating AI translation quality across multiple p
 ![Main Page](docs/screenshots/main_page.png)
 *Translation input with multiple provider options*
 
+![Results Page](docs/screenshots/main_page_results.png)
+*Translation results with quality scores and rankings*
+
 ### Translation History
 ![History View](docs/screenshots/history_view.png)
 *Browse and review past translation runs*

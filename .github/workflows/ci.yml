@@ -40,8 +40,7 @@ jobs:
     
     - name: Setup config for health check
       run: |
-        cd backend
-        cp ../config.yaml.example ../config.yaml
+        cp config.yaml.example config.yaml
     
     - name: Health check
       run: |
